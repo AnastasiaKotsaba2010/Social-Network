@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<!-- {% load static %}/ -->
+{% load customtags %}
+
+{% block title %}{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'user_app/css/verify_emails.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="modal-overlay" id="emailModal">
+
+        <div class="modal">
+            <h2>Підтвердження пошти</h2>
+            <p>Ми надіслали 6-значний код на вашу пошту<br>(you@example.com). Введіть його нижче, щоб підтвердити акаунт</p>
+
+
+            <form id="codeForm" method="post">
+                {% csrf_token %}
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                <div class="code-inputs">
+                    {% for i in "012345" %}
+                        <input type="text" maxlength="1" name="code{{ i }}" class="code-box" required>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn confirm">Підтвердити</button>
+                <a href="{% url 'home' %}" class="back-btn">Назад</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src=""></script>
+{% endblock %}

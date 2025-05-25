@@ -1,10 +1,176 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    Home app
+{% block title %}{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'home/css/home_style.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1>Home app</h1>
-{% endblock %}
+    {% if  request.user.is_authenticated %}
+    <div class="content-wrapper">
+        <div class="profile-info">
+            <div class="account-info">
+                <div class="profile-picture">
+                    <img src="{% static 'home/media/profile-picture.svg' %}" alt="Profile Picture">
+                </div>
+    
+                <div class="names">
+                    <h2>Username</h2>
+                    <h3>@account</h3>
+                </div>
+    
+                <div class="basic-acc-info">
+                    <div class="acc-info">
+                        <h4 class="txt-amount">566</h4>
+                        <p class="txt-under">Дописи</p>
+                    </div>
+                    
+                    <div class="acc-info" id="1">
+                        <h4 class="txt-amount">12.1K</h4>
+                        <p class="txt-under">Читачі</p>
+                    </div>
+                    <div class="acc-info">
+                        <h4 class="txt-amount">222</h4>  
+                        <p class="txt-under">Друзі</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="following-requests">
+                <div class="request-tabs">
+                    <p class="txt-req"> <img src="{% static 'home/media/people_gr.svg' %}" alt="people">Запити</p>
+                    <button class="show-all-btn">Дивитись всі</button>
+                </div>
+    
+                <div class="requests">
+                    <div class="user-info">
+                        <img src="{% static 'home/media/avatar.svg' %}" alt="Profile Picture">
+                        
+                        <div class="txt-info-acc">
+                            <h4 class="username-short">Username</h4>
+                            <p class="desc-short">4.3k підписників</p>
+                        </div>
+                    </div>
+    
+                    <div class="user-info">
+                        <img src="{% static 'home/media/avatar.svg' %}" alt="Profile Picture">
+                        
+                        <div class="txt-info-acc">
+                            <h4 class="username-short">Username</h4>
+                            <p class="desc-short">4.3k підписникі</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="messages">
+                <div class="request-tabs">
+                    <p class="txt-req"> <img src="{% static 'home/media/chat.svg' %}" alt="people">Повідомлення</p>
+                    <button class="show-all-btn">Дивитись всі</button>
+                </div>
+    
+                <div class="requests">
+                    <div class="user-info">
+                        <img src="{% static 'home/media/avatar.svg' %}" alt="Profile Picture">
+                        
+                        <div class="txt-info-acc">
+                            <h4 class="username-short">Username</h4>
+                            <p class="desc-short">Привіт! Як справи?</p>
+                        </div>
+                        <p class="date">21.09.2023</p>
+                    </div>
+    
+                    <div class="user-info">
+                        <img src="{% static 'home/media/avatar.svg' %}" alt="Profile Picture">
+                        
+                        <div class="txt-info-acc">
+                            <h4 class="username-short">Username</h4>
+                            <p class="desc-short">Привіт! Як справи?</p>
+                        </div>
+                        <p class="date">21.09.2023</p>                 
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        <div class="user-posts">
+            <div class="txt-message">
+                <textarea placeholder="Текст публікації"></textarea>
+                
+                <div class="design-btns">
+                    <button class="stickers"><img src="{% static 'home/media/stickers.svg' %}" alt="stickers"></button>
+                    <button class="design-btn">Перейти до оформлення</button>
+                </div>
+                
+                
+            </div>
+            
+            <div class="post-blocks">
+                <div class="user-posts">
+                    <div class="post-header">
+                        <div class="post-acc-info">
+                            <img src="{% static 'home/media/post_av.svg' %}" alt="avatar">                        
+                            <p class="username-p">X_AE_A-13</p>
+                        </div>
+
+                        <div class="add-info">
+                            <img src="{% static 'home/media/signature.svg' %}" alt="signature">
+                            <button class="see-more-btn">
+                                <img src="{% static 'home/media/3dots.svg' %}" alt="3 dots">
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p class="post-text">Інколи найкращі ідеї народжуються в тиші 🌿
+                        Природа, книга і спокій — усе, що потрібно, аби перезавантажитись.</p>
+                        <img src="{% static 'home/media/post1.svg' %}" alt="Post Image">
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="like-btn"><img src="{% static 'home/media/like.svg' %}" alt="like"> 120 Вподобань</button>
+                        <button class="seen-btn"><img src="{% static 'home/media/eye.svg' %}" alt="comment"> 890 переглядів</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="header-logo-2">
+            <a href="{% url 'sign_up' %}" class="links">Registration</a>
+            <a href="{% url 'login' %}" class="links">Authorization</a>
+
+        </div>                
+    {% endif %}
+    {% endblock %}
+    <!-- <div class="post-block">
+        <div class="post-heade">
+            <div class="post-user">
+                <img src="{% static 'home/media/post_av.svg' %}" alt="avatar">
+                <span class="username">X_AE-A-13</span>
+            </div>
+            <img src="{% static 'home/media/signature.svg' %}" class="signature" alt="signature">
+        </div>
+        
+        <div class="post-text">
+            Найвища найкращі ідеї народжуються в тиші 🍃<br>
+            Природа, книги і спокій — усе, що потрібно, аби перезавантажитись.<br>
+            #вдячність #натхнення #життя #природа #спокій #гармонія
+        </div>
+
+        <div class="post-images">
+            <img src="{% static 'home/media/post1.svg' %}" alt="">                                <img src="{% static 'home/media/post1.svg' %}" alt="">
+            <img src="{% static 'home/media/post1.svg' %}" alt="">
+            <img src="{% static 'home/media/post1.svg' %}" alt="">
+            <img src="{% static 'home/media/post1.svg' %}" alt="">
+            <img src="{% static 'home/media/post1.svg' %}" alt="">
+        </div>
+        
+        <div class="post-actions">
+            <div class="action"><img src="{% static 'home/media/like.svg' %}" alt="">120 Вподобань</div>
+            <div class="action"><img src="{% static 'home/media/eye.svg' %}" alt="">890 Переглядів</div>
+        </div>
+    </div> -->

@@ -1,0 +1,42 @@
+<!-- Відображення помилок які не мають відношення до помилок у input -->
+{% if form.non_field_errors %}
+    <div class="form-erros">
+        <ul>
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <!-- Задаємо контейнер для кожної пари label and input -->
+        <div class="form-field">
+            <!-- Додаємо підпис до input з файлу forms.py -->
+            <label for="{{ field.id_for_label }}">
+                <p>{{ field.label }}</p>
+            </label>
+            <!-- Додаємо input з файлу forms.py -->
+            <p>{{ field }}</p>
+        </div>
+
+        <!-- Задаємо відображення помилок, що пов'язані з input -->
+        {% if field.errors %}
+            <div class="field-erros">
+                <ul>
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <!-- Відображення форми в залежності від назви -->
+    {% if form_name == 'register' %}
+        <button type="submit" class="btn">Створити акаунт</button>
+    {% elif form_name == 'auth' %}
+        <button type="submit" class="btn">Увійти</button>
+    {% endif %}
+</form>

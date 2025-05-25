@@ -1,19 +1,30 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends 'base.html' %}
+<!-- {% load static %}/ -->
+{% load customtags %}
 
-{% block title %}
-    Sign Up
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'user_app/css/sign_up.css' %}">
+    <link rel="stylesheet" href="{% static 'user_app/css/registration.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1>Registration Form</h1>
-    <form action="" method="post"  >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Створити аккаунт</button>   
-    </form>
+    <div class="form-container">
+        <div class="tabs">
+            <a href="{% url 'sign_up' %}" class="tab active">Реєстрація</a>
+            <a href="{% url 'login' %}" class="tab">Авторизація</a>
+        </div>
+
+        <h2 class="form-title">Приєднуйся до World IT</h2>
+
+        <div class="register-form">
+            {% render_custom_form %}
+        </div>
+    </div>
+{% endblock %}
+
+<!-- <img src="{% static 'user_app/media/laptop-bg.svg' %}" alt="labtop-bg" class="laptop-bg"> -->
+
+{% block scripts %}
+    <script src=""></script>
 {% endblock %}

@@ -1,0 +1,94 @@
+*{
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: 'GT Walsheim Pro', sans-serif;
+}
+
+body{
+    display: flex;
+    background-color: rgba(250, 248, 255, 1);
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 80px;
+    
+    background-color: white;
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 88px;
+    box-sizing: border-box;
+}
+
+
+.header-logo img{
+    height: 15.93px;
+}
+
+.header-nav{
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.header-logout-btn{
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 95px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(84, 60, 82, 1);
+    padding: 10px 16px;
+    color: rgba(84, 60, 82, 1);
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.page-link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: auto;
+    height: 28px;
+
+    border-radius: 3px;
+    border: none;
+    padding: 4px 8px;
+    color: rgba(7, 10, 28, 1);
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.page-link.active {
+    background-color: rgba(233, 229, 238, 1);
+}
